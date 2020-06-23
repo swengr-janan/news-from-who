@@ -84,7 +84,7 @@ a {
 
 .card h1 {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 1.3em;
   line-height: 1.2em;
 }
 
@@ -179,6 +179,31 @@ a {
   font-size: 1em;
   font-weight: normal;
 }
+
+footer {
+  position: static;
+  min-height: 53px;
+  background-color: #303036;
+  color: #d3d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 14px;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+footer h1 {
+  text-align: center; 
+  font-weight: lighter;
+}
+
+.text-signature span {
+  color: #00FFFF;
+  font-weight: lighter;
+ }
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1285px) {

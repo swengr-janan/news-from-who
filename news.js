@@ -15,17 +15,17 @@ const getNews = () => {
 }
 
 const showNews = (xmlDoc) => {
-    console.log(xmlDoc);
     var finalNews = '';
 
-    let list = document.getElementById('item');  
+    console.log(xmlDoc);
+
+    let item = xmlDoc.getElementsByTagName('item');
     let link = xmlDoc.getElementsByTagName('link');
     let title = xmlDoc.getElementsByTagName('title');
-    let description = xmlDoc.getElementsByTagName('a10:content');
     let pubDate = xmlDoc.getElementsByTagName('pubDate');
 
-    for(let i = 0; i < title.length; i++){
-
+    for(let i = 0; i < item.length; i++){
+    
         finalNews += 
           `
         <div class="card-grid-space">
@@ -33,7 +33,7 @@ const showNews = (xmlDoc) => {
             <div>
               <h1>${title[i].firstChild.nodeValue}</h1>
               <p></p>
-              <div class="date">${pubDate[i]}</div>
+              <div class="date">${pubDate[i].textContent}</div>
               <div class="tags">
                 <div class="tag"><i class="fas fa-info-circle"></i> Show more</div>
               </div>
