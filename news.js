@@ -1,33 +1,31 @@
 window.onload = () => {
-    getNews();
-}
+  getNews();
+};
 
 const getNews = () => {
-    fetch('https://www.who.int/rss-feeds/news-english.xml')
-    .then((response)=>{
+  fetch("https://www.who.int/rss-feeds/news-english.xml")
+    .then((response) => {
       return response.text();
     })
-    .then((data)=>{
+    .then((data) => {
       let parser = new DOMParser(),
-          xmlDoc = parser.parseFromString(data, 'text/xml');
-          showNews(xmlDoc);
-    })
-}
+        xmlDoc = parser.parseFromString(data, "text/xml");
+      showNews(xmlDoc);
+    });
+};
 
 const showNews = (xmlDoc) => {
-    var finalNews = '';
+  var finalNews = "";
 
-    console.log(xmlDoc);
+  console.log(xmlDoc);
 
-    let item = xmlDoc.getElementsByTagName('item');
-    let link = xmlDoc.getElementsByTagName('link');
-    let title = xmlDoc.getElementsByTagName('title');
-    let pubDate = xmlDoc.getElementsByTagName('pubDate');
+  let item = xmlDoc.getElementsByTagName("item");
+  let link = xmlDoc.getElementsByTagName("link");
+  let title = xmlDoc.getElementsByTagName("title");
+  let pubDate = xmlDoc.getElementsByTagName("pubDate");
 
-    for(let i = 0; i < item.length; i++){
-    
-        finalNews += 
-          `
+  for (let i = 0; i < item.length; i++) {
+    finalNews += `
         <div class="card-grid-space">
           <a class="card" href="${link[i].firstChild.nodeValue}" style="--bg-img: url(https://www.deloittedigital.com/content/dam/deloittedigital/us/images/landscape-2x1/hero-images/offering-20190301-digitaldna-hero.jpg)">
             <div>
@@ -40,7 +38,7 @@ const showNews = (xmlDoc) => {
             </div>
           </a>
         </div>
-          `
-      }
-      document.querySelector('.cards-wrapper').innerHTML = finalNews;
-}
+          `;
+  }
+  document.querySelector(".cards-wrapper-news").innerHTML = finalNews;
+};
